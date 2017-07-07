@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+const gradients = {
+  blue: {
+    from: '#17EAD9',    
+    to: '#6078EA',
+  },
+  red: {
+    from: '#DE1A1A',
+    to: '#47161A',
+  },
+  lightGrey: {
+    from: 'rgba(12, 12, 12, 0.03)', 
+    to: 'rgba(255, 255, 255, 0.0)',
+  },
+};
+
 const Page = styled.div``;
 
 const Header = styled.div`
@@ -21,6 +36,8 @@ const MainContentContainer = styled.div`
   position: relative;
 `;
 
+const SubContentContainer = styled.div``;
+
 const FirstSectionMainContent = styled.div`
   margin: 2rem 1rem 6rem 1rem;
   display: flex;
@@ -40,14 +57,12 @@ const MainContentPlaceholder = styled.div`
   min-height: 20rem;
 `;
 
-const SubContentContainer = styled.div``;
-
 const SubContentPlaceholder = styled.div`
   height: 12rem;
 `;
 
 const BlueGradient = styled.div`
-  background-image: linear-gradient(70deg, #4cc2b1, #0c5290);
+  background-image: linear-gradient(70deg, ${gradients.blue.from}, ${gradients.blue.to});
   position: absolute;
   top: -10vw;
   right: 0;
@@ -59,7 +74,7 @@ const BlueGradient = styled.div`
 `;
 
 const RedGradient = styled.div`
-  background-image: linear-gradient(70deg, #de1a1a, #47161a);
+  background-image: linear-gradient(70deg, ${gradients.red.from}, ${gradients.red.to});
   position: absolute;
   top: -10vw;
   right: 0;
@@ -83,13 +98,17 @@ const GradientBand = styled.div`
 
 const OffWhiteGradient = styled.div`
   height: calc(45vw);
-  background-image: linear-gradient(90deg, rgba(12, 12, 12, 0.03), rgba(255, 255, 255, 0.0));
+  background-image: linear-gradient(90deg, ${gradients.lightGrey.from}, ${gradients.lightGrey.to});
   position: absolute;
   margin-top: calc((45vw * -1));
   transform: translate(0, 150px) skewY(15deg);
   left: 0;
   right: 0;
   z-index: -2;
+`;
+
+const ReverseOffWhiteGradient = OffWhiteGradient.extend`
+  transform: rotateY(180deg) translate(0, 150px) skewY(15deg);
 `;
 
 const H1 = styled.h1`
@@ -104,10 +123,6 @@ const P = styled.p`
   color: #fff;
   opacity: 0.8;
   line-height: 1.5;
-`;
-
-const ReverseOffWhiteGradient = OffWhiteGradient.extend`
-  transform: rotateY(180deg) translate(0, 150px) skewY(15deg);
 `;
 
 const OverlayContainer = styled.div`
